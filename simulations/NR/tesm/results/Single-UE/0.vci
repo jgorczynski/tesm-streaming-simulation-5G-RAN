@@ -1,0 +1,158 @@
+file 6045 1705781504                                            
+version 3
+run Single-UE-0-20240120-21:11:24-23916
+attr configname Single-UE
+attr datetime 20240120-21:11:24
+attr datetimef 20240120-211124
+attr experiment Single-UE
+attr inifile omnetpp.ini
+attr iterationvars $packetLen=1000B
+attr iterationvarsd packetLen=1000B
+attr iterationvarsf packetLen=1000B-
+attr measurement $packetLen=1000B
+attr network simu5g.simulations.NR.networks.SingleCell_Standalone
+attr processid 23916
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+itervar packetLen 1000B
+config image-path ../../../images:../../../../inet4.4/images:../../../../veins_inet/images:../../../../veins-veins-5.2/images
+config *.gnb.mobility.initialX 500m
+config *.gnb.mobility.initialY 500m
+config *.numUe 1
+config *.ue[*].mobility.typename LinearMobility
+config *.ue[*].mobility.initialX uniform(600m,1000m)
+config *.ue[*].mobility.initialY uniform(500m,500m)
+config *.ue[*].mobility.initialZ 0m
+config *.ue[*].mobility.speed 100mps
+config *.ue[*].macCellId 0
+config *.ue[*].masterId 0
+config *.ue[*].nrMacCellId 1
+config *.ue[*].nrMasterId 1
+config *.ue[*].numApps 1
+config *.server.numApps 1
+config **.ue[*].mobility.initFromDisplayString false
+config **.ue[*].app[*].typename UdpVideoStreamClient
+config **.ue[*].app[*].serverAddress "\"server\""
+config **.ue[*].app[*].localPort 9999
+config **.ue[*].app[*].serverPort 3088
+config **.ue[*].app[*].startTime "uniform(0s, 0.02s)"
+config **.server.app[*].typename UdpVideoStreamServer
+config **.server.app[*].videoSize 10MiB
+config **.server.app[*].localPort 3088
+config **.server.app[*].sendInterval 20ms
+config **.server.app[*].packetLen 1000B
+config **.mtu 10000B
+config output-scalar-file-append false
+config network simu5g.simulations.NR.networks.SingleCell_Standalone
+config sim-time-limit 10s
+config warmup-period 1s
+config seed-set 0
+config output-scalar-file results/Single-UE/0.sca
+config output-vector-file results/Single-UE/0.vec
+config **.routingRecorder.enabled false
+config **.amcType "\"NRAmc\""
+config **.targetBler 0.01
+config **.blerShift 5
+config *.configurator.config "xmldoc(\"./config.xml\")"
+config **.mobility.constraintAreaMaxX 2500m
+config **.mobility.constraintAreaMaxY 2500m
+config **.mobility.constraintAreaMinX 0m
+config **.mobility.constraintAreaMinY 0m
+config **.mobility.constraintAreaMinZ 0m
+config **.mobility.constraintAreaMaxZ 0m
+config **.mobility.initFromDisplayString false
+
+vector 0 SingleCell_Standalone.server.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 1 SingleCell_Standalone.server.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 2 SingleCell_Standalone.server.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 3 SingleCell_Standalone.upf.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 4 SingleCell_Standalone.upf.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 5 SingleCell_Standalone.upf.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 6 SingleCell_Standalone.iUpf.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 7 SingleCell_Standalone.iUpf.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 8 SingleCell_Standalone.iUpf.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 9 SingleCell_Standalone.gnb.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 10 SingleCell_Standalone.gnb.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 11 SingleCell_Standalone.gnb.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 12 SingleCell_Standalone.ue[0].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 13 SingleCell_Standalone.ue[0].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 14 SingleCell_Standalone.ue[0].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+0	5919 8 0 0 1 1 1 0 0 0 0
+1	5927 8 0 0 1 1 1 0 0 0 0
+2	5935 8 0 0 1 1 1 0 0 0 0
+3	5943 8 0 0 1 1 1 0 0 0 0
+4	5951 8 0 0 1 1 1 0 0 0 0
+5	5959 8 0 0 1 1 1 0 0 0 0
+6	5967 8 0 0 1 1 1 0 0 0 0
+7	5975 8 0 0 1 1 1 0 0 0 0
+8	5983 8 0 0 1 1 1 0 0 0 0
+9	5991 8 0 0 1 1 1 0 0 0 0
+10	5999 9 0 0 1 1 1 0 0 0 0
+11	6008 9 0 0 1 1 1 0 0 0 0
+12	6017 9 0 0 1 1 1 0 0 0 0
+13	6026 9 0 0 1 1 1 0 0 0 0
+14	6035 9 0 0 1 1 1 0 0 0 0
+
